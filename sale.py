@@ -45,12 +45,27 @@ class Configuration:
     ups_package_type = fields.Selection(
         UPS_PACKAGE_TYPES, 'Package Content Type'
     )
+    ups_dhl_type = fields.Selection(
+        UPS_PACKAGE_TYPES, 'Default DHL Service Type'
+    )
+    ups_dpd_type = fields.Selection(
+        UPS_PACKAGE_TYPES, 'Default DPD Service Type'
+    )
 
     @staticmethod
     def default_ups_package_type():
         # This is the default value as specified in UPS doc
         return '02'
 
+    @staticmethod
+    def default_ups_dhl_type():
+        #This is the default value as specified in UPS doc
+        return '02'
+
+    @staticmethod
+    def default_ups_dpd_type():
+        #This is the default value as specified in UPS doc
+        return '02'
 
 class Sale:
     "Sale"
@@ -95,6 +110,18 @@ class Sale:
         Config = Pool().get('sale.configuration')
         config = Config(1)
         return config.ups_package_type
+     
+    @staticmethod
+    def default_ups_dhl_type():
+        Config = Pool().get('sale.configuration')
+        config = Config(1)
+        return config.ups_dhl_type
+
+    @staticmethod
+    def default_ups_dpd_type():
+        Config = Pool.get('sale.configuration')
+        config = Config(1)
+        return config.ups_dpd_type
 
     @staticmethod
     def default_ups_service_type():

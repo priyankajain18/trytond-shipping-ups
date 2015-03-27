@@ -612,6 +612,16 @@ class TestUPS(unittest.TestCase):
             with Transaction().set_context(sale=sale):
                 self.assertGreater(self.carrier.get_rates(), 0)
 
+    def test_0040_defaultdhl_dpd_values(self):
+        """
+        Test the default values of DPD and DHL fields
+        """
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
+            self.setup_defaults()
+            #Creating Record
+            Config = POOL.get('sale.configuration')
+            config = Config(1)
+            self.assertEqual(config.ups_dhl_type, '02')
 
 def suite():
     suite = trytond.tests.test_tryton.suite()

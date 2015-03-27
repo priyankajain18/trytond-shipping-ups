@@ -7,5 +7,9 @@
         <field name="ups_service_type" widget="selection"/>
         <label name="ups_package_type"/>
         <field name="ups_package_type"/>
+        <label name="ups_dhl_type"/>
+        <field name="ups_dhl_type"/>
+        <label name="ups_dpd_type"/>
+        <field name="ups_dpd_type"/>
     </xpath>
 </data>
